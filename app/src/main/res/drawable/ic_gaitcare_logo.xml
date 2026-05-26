@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="80dp"
+    android:height="80dp"
+    android:viewportWidth="80"
+    android:viewportHeight="80">
+    <!-- 배경 원 -->
+    <path
+        android:fillColor="#FF2196F3"
+        android:pathData="M40,40m-38,0a38,38 0,1 1,76 0a38,38 0,1 1,-76 0" />
+    <!-- 사람 걷는 모양 -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M40,16 C42.2,16 44,17.8 44,20 C44,22.2 42.2,24 40,24 C37.8,24 36,22.2 36,20 C36,17.8 37.8,16 40,16Z" />
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M46,26 L42,26 L38,32 L32,36 L34,38 L39,35 L37,42 L32,50 L34.5,51 L39,43 L42,50 L44,62 L47,62 L45,50 L48,42 L52,50 L54.5,49 L50,41 L48,34 L52,38 L54,36 L48,31 Z" />
+</vector>

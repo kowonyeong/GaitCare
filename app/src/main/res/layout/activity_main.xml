@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 스플래시 용도 - MainActivity는 즉시 다른 화면으로 redirect함 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_blue">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="GaitCare"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/white" />
+</FrameLayout>

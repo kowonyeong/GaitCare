@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">GaitCare</string>
+    <string name="app_subtitle">요양원 보행 평가 시스템</string>
+    <string name="login_title">기관 로그인</string>
+    <string name="institution_code">기관 코드</string>
+    <string name="auto_login">자동 로그인</string>
+    <string name="btn_login">로그인</string>
+    <string name="btn_register">기관 회원가입</string>
+    <string name="main_title">어르신 목록</string>
+    <string name="btn_add_elderly">어르신 추가</string>
+    <string name="search_hint">이름으로 검색</string>
+    <string name="gait_history">보행 기록</string>
+    <string name="btn_measure_gait">보행 측정 시작</string>
+    <string name="no_history">아직 측정 기록이 없습니다</string>
+    <string name="measurement_title">보행 측정</string>
+    <string name="btn_start_measure">측정 시작</string>
+    <string name="btn_stop_measure">측정 완료</string>
+    <string name="result_title">보행 평가 결과</string>
+    <string name="score_label">종합 보행 점수</string>
+    <string name="shakiness">흔들림</string>
+    <string name="rhythm">보행 리듬</string>
+    <string name="symmetry">보행 대칭성</string>
+    <string name="rotation">회전 안정성</string>
+    <string name="cadence">보행 속도</string>
+    <string name="btn_save_result">결과 저장</string>
+    <string name="btn_remeasure">재측정</string>
+    <string name="logout_confirm">로그아웃 하시겠습니까?</string>
+    <string name="save_success">저장되었습니다</string>
+</resources>

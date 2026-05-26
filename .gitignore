@@ -1,0 +1,38 @@
+# Android / Gradle
+*.iml
+.gradle/
+local.properties
+build/
+/captures
+.externalNativeBuild
+.cxx/
+release/
+
+# Android Studio / IDE
+.idea/
+*.iws
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Keystore / secrets
+*.jks
+*.keystore
+keystore.properties
+
+# Logs
+*.log
+hs_err_pid*
+
+# Kotlin/JVM
+.kotlin/
+
+# APK / mapping
+*.apk
+*.aab
+mapping.txt
+
+# Generated
+local.properties

@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_light"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 헤더 (파란 배경 + 점수) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/primary_blue"
+            android:paddingTop="48dp"
+            android:paddingBottom="32dp"
+            android:paddingHorizontal="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_arrow_back"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="뒤로가기" />
+                <TextView
+                    android:id="@+id/tvElderlyName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="어르신 이름"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="8dp" />
+                <TextView
+                    android:id="@+id/tvMeasureDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:textColor="#CCFFFFFF"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- 종합 점수 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- 원형 점수 표시 -->
+                <FrameLayout
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:background="@drawable/bg_score_circle">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView
+                            android:id="@+id/tvTotalScore"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="--"
+                            android:textSize="50sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="점"
+                            android:textSize="16sp"
+                            android:textColor="#CCFFFFFF" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="24dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="종합 보행 점수"
+                        android:textSize="14sp"
+                        android:textColor="#CCFFFFFF" />
+                    <TextView
+                        android:id="@+id/tvScoreLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="--"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:layout_marginTop="4dp" />
+                    <TextView
+                        android:id="@+id/tvDuration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-- 측정"
+                        android:textSize="13sp"
+                        android:textColor="#99FFFFFF"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 세부 지표 카드 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_margin="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="세부 지표"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- 흔들림 -->
+                <include layout="@layout/item_metric_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <!-- 각 지표는 include 대신 직접 작성 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="12dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="흔들림" android:textSize="14sp"
+                            android:textColor="@color/text_primary" />
+                        <TextView android:id="@+id/tvShakinessScore" android:layout_width="48dp"
+                            android:layout_height="wrap_content" android:text="--" android:textSize="16sp"
+                            android:textStyle="bold" android:textColor="@color/primary_blue"
+                            android:gravity="end" />
+                    </LinearLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="10dp"
+                        android:background="@drawable/bg_metric_bar" android:layout_marginTop="6dp">
+                        <View android:id="@+id/progressShakiness" android:layout_width="0dp"
+                            android:layout_height="match_parent" android:background="@drawable/bg_metric_bar_fill" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:layout_marginBottom="12dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="보행 리듬" android:textSize="14sp"
+                            android:textColor="@color/text_primary" />
+                        <TextView android:id="@+id/tvRhythmScore" android:layout_width="48dp"
+                            android:layout_height="wrap_content" android:text="--" android:textSize="16sp"
+                            android:textStyle="bold" android:textColor="@color/primary_blue" android:gravity="end" />
+                    </LinearLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="10dp"
+                        android:background="@drawable/bg_metric_bar" android:layout_marginTop="6dp">
+                        <View android:id="@+id/progressRhythm" android:layout_width="0dp"
+                            android:layout_height="match_parent" android:background="@drawable/bg_metric_bar_fill" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:layout_marginBottom="12dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="보행 대칭성" android:textSize="14sp"
+                            android:textColor="@color/text_primary" />
+                        <TextView android:id="@+id/tvSymmetryScore" android:layout_width="48dp"
+                            android:layout_height="wrap_content" android:text="--" android:textSize="16sp"
+                            android:textStyle="bold" android:textColor="@color/primary_blue" android:gravity="end" />
+                    </LinearLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="10dp"
+                        android:background="@drawable/bg_metric_bar" android:layout_marginTop="6dp">
+                        <View android:id="@+id/progressSymmetry" android:layout_width="0dp"
+                            android:layout_height="match_parent" android:background="@drawable/bg_metric_bar_fill" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical" android:layout_marginBottom="12dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="회전 안정성" android:textSize="14sp"
+                            android:textColor="@color/text_primary" />
+                        <TextView android:id="@+id/tvRotationScore" android:layout_width="48dp"
+                            android:layout_height="wrap_content" android:text="--" android:textSize="16sp"
+                            android:textStyle="bold" android:textColor="@color/primary_blue" android:gravity="end" />
+                    </LinearLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="10dp"
+                        android:background="@drawable/bg_metric_bar" android:layout_marginTop="6dp">
+                        <View android:id="@+id/progressRotation" android:layout_width="0dp"
+                            android:layout_height="match_parent" android:background="@drawable/bg_metric_bar_fill" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="horizontal" android:gravity="center_vertical">
+                        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                            android:layout_weight="1" android:text="보행 속도" android:textSize="14sp"
+                            android:textColor="@color/text_primary" />
+                        <TextView android:id="@+id/tvCadenceScore" android:layout_width="48dp"
+                            android:layout_height="wrap_content" android:text="--" android:textSize="16sp"
+                            android:textStyle="bold" android:textColor="@color/primary_blue" android:gravity="end" />
+                    </LinearLayout>
+                    <FrameLayout android:layout_width="match_parent" android:layout_height="10dp"
+                        android:background="@drawable/bg_metric_bar" android:layout_marginTop="6dp">
+                        <View android:id="@+id/progressCadence" android:layout_width="0dp"
+                            android:layout_height="match_parent" android:background="@drawable/bg_metric_bar_fill" />
+                    </FrameLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 상세 수치 카드 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="측정 상세"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="12dp" />
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:visibility="gone">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="걸음 수" android:textSize="13sp"
+                        android:textColor="@color/text_hint" />
+                    <TextView android:id="@+id/tvStepCount" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textSize="13sp"
+                        android:textColor="@color/text_primary" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="보행 속도 (전방 RMS, g)" android:textSize="13sp"
+                        android:textColor="@color/text_hint" />
+                    <TextView android:id="@+id/tvCadenceValue" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textSize="13sp"
+                        android:textColor="@color/text_primary" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="보행 리듬 변동계수" android:textSize="13sp"
+                        android:textColor="@color/text_hint" />
+                    <TextView android:id="@+id/tvCvPercent" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textSize="13sp"
+                        android:textColor="@color/text_primary" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="좌우 흔들림 (RMS)" android:textSize="13sp"
+                        android:textColor="@color/text_hint" />
+                    <TextView android:id="@+id/tvLateralRms" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textSize="13sp"
+                        android:textColor="@color/text_primary" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="수직 흔들림 (RMS)" android:textSize="13sp"
+                        android:textColor="@color/text_hint" />
+                    <TextView android:id="@+id/tvVerticalRms" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textSize="13sp"
+                        android:textColor="@color/text_primary" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:layout_marginBottom="8dp">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="보행 대칭 지수" android:textSize="13sp"
+                        android:textColor="@color/text_hint" />
+                    <TextView android:id="@+id/tvSymmetryIndex" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textSize="13sp"
+                        android:textColor="@color/text_primary" android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:text="평균 회전 속도" android:textSize="13sp"
+                        android:textColor="@color/text_hint" />
+                    <TextView android:id="@+id/tvRotationDeg" android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:textSize="13sp"
+                        android:textColor="@color/text_primary" android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 소견 카드 -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/primary_blue_light"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginBottom="16dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="소견"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/primary_blue"
+                    android:layout_marginBottom="8dp" />
+                <TextView
+                    android:id="@+id/tvAdvice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="14sp"
+                    android:textColor="@color/text_primary"
+                    android:lineSpacingMultiplier="1.5" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- 메모 + 저장 버튼 (새 측정 결과일 때만) -->
+        <LinearLayout
+            android:id="@+id/layoutSaveButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/GaitCare.TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="메모 (선택사항)"
+                android:layout_marginBottom="12dp">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMemo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:minLines="2"
+                    android:maxLines="4" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                style="@style/GaitCare.Button.Primary"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="결과 저장"
+                android:layout_marginBottom="8dp" />
+
+            <Button
+                android:id="@+id/btnRemeasure"
+                style="@style/GaitCare.Button.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:text="재측정"
+                android:layout_marginBottom="16dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
